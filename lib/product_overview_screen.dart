@@ -1,4 +1,6 @@
 import 'package:application/drawer.dart';
+import 'package:application/image_slider.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
 class ProductsOverviewScreen extends StatefulWidget {
@@ -31,6 +33,12 @@ class _MyHomePageState extends State<ProductsOverviewScreen> {
         ],
       ),
       drawer: SideDrawer(),
+      body: ListView(
+        children: <Widget>[
+          ImageSlider(),
+          
+        ],
+      ),
     );
   }
 }
