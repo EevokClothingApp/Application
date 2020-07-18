@@ -1,22 +1,19 @@
-import 'package:application/product_overview_screen.dart';
-
 import 'package:flutter/material.dart';
+import 'package:application/loginpage.dart';
 
-void main() {
-  runApp(MyApp());
-}
+
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'EEVOK Clothing App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: ProductsOverviewScreen(),
+      title: 'Eevok.clothing',
       debugShowCheckedModeBanner: false,
+      home: LoginPage(),
     );
   }
 }
+
