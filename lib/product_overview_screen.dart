@@ -36,7 +36,7 @@ class _MyHomePageState extends State<ProductsOverviewScreen> {
       body: ListView(
         children: <Widget>[
           ImageSlider(),
-          
+
         ],
       ),
     );
