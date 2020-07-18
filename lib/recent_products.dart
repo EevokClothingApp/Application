@@ -47,7 +47,7 @@ class RecentProducts extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: products.length*60.0,
+        height: products.length*51.0,
         child: GridView.builder(
           itemCount: products.length,
           gridDelegate:

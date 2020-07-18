@@ -19,7 +19,42 @@ class SingleProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('data'),
+      child: Card(
+        child: Hero(
+            tag: title,
+            child: Material(
+              child: InkWell(
+                onTap: () {},
+                child: GridTile(
+                  child: Image.network(imageURL),
+                  footer: Container(
+                    color: Colors.white70,
+                    child: ListTile(
+                      title: Text(
+                        "\$$prod_old_price",
+                        style:
+                            TextStyle(decoration: TextDecoration.lineThrough),
+                      ),
+                      leading: Text(
+                        title,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18.0),
+                        textAlign: TextAlign.center,
+                      ),
+                      subtitle: Text(
+                        '\$$price',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            )),
+      ),
     );
   }
 }
