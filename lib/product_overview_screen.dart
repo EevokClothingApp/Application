@@ -1,6 +1,7 @@
 import 'package:application/drawer.dart';
+import 'package:application/horizontal_list_view.dart';
 import 'package:application/image_slider.dart';
-import 'package:carousel_pro/carousel_pro.dart';
+import 'package:application/recent_products.dart';
 import 'package:flutter/material.dart';
 
 class ProductsOverviewScreen extends StatefulWidget {
@@ -36,7 +37,37 @@ class _MyHomePageState extends State<ProductsOverviewScreen> {
       body: ListView(
         children: <Widget>[
           ImageSlider(),
-
+          Container(
+            color: Colors.pink[50],
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Categories',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15.0,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 5.0,),
+          HorizontalListView(),
+          SizedBox(height: 5.0,),
+          Container(
+            color: Colors.pink[50],
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Recent Products',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15.0,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 5.0,),
+          RecentProducts(),
         ],
       ),
     );
