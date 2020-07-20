@@ -14,10 +14,13 @@ class ImageSlider extends StatelessWidget {
           AssetImage('images/2.jfif'),
           AssetImage('images/3.jpg'),
         ],
-        autoplay: true, //make true later
-        animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(seconds: 2),
+        autoplay: false, //make true later
+        //animationCurve: Curves.linearToEaseOut,
+        //animationDuration: Duration(seconds: 2),
         dotSize: 5.0,
+        //dotColor: Colors.pinkAccent,
+        indicatorBgPadding: 5.0,
+        dotBgColor: Colors.transparent,
       ),
     );
   }

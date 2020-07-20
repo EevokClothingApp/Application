@@ -1,20 +1,18 @@
-import 'package:application/cart.dart';
 import 'package:application/drawer.dart';
-import 'package:application/recent_products.dart';
 import 'package:flutter/material.dart';
 
-class ProductsOverviewScreen extends StatefulWidget {
+class CartScreen extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _CartScreenState createState() => _CartScreenState();
 }
 
-class _MyHomePageState extends State<ProductsOverviewScreen> {
+class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink,
-        title: Text("EEVOK Clothing App"),
+        title: Text("Your Cart",),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -28,19 +26,11 @@ class _MyHomePageState extends State<ProductsOverviewScreen> {
               Icons.shopping_cart,
               color: Colors.white,
             ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CartScreen(),
-                ),
-              );
-            },
+            onPressed: () {},
           )
         ],
       ),
       drawer: SideDrawer(),
-      body: RecentProducts(),
     );
   }
 }

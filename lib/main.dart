@@ -1,4 +1,5 @@
 import 'package:application/product_overview_screen.dart';
+import 'package:application/single_product_overview.dart';
 
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
       ),
       home: ProductsOverviewScreen(),
       debugShowCheckedModeBanner: false,
+      routes: {
+        //SingleProductOverview.pageRoute: (context) => SingleProductOverview(),
+      },
     );
   }
 }
