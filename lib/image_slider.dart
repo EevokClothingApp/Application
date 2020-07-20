@@ -20,6 +20,7 @@ class ImageSlider extends StatelessWidget {
         dotSize: 5.0,
         //dotColor: Colors.pinkAccent,
         indicatorBgPadding: 5.0,
+        dotBgColor: Colors.transparent,
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:application/single_product_overview.dart';
 import 'package:flutter/material.dart';
 
 class SingleProduct extends StatelessWidget {
@@ -21,10 +22,20 @@ class SingleProduct extends StatelessWidget {
     return Container(
       child: Card(
         child: Hero(
-            tag: title,
+            tag: Text('hero'),
             child: Material(
               child: InkWell(
-                onTap: () {},
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SingleProductOverview(
+                        title: title,
+                        imageURL: imageURL,
+                        prod_old_price: prod_old_price,
+                        price: price,
+                        id: id,
+                        description: description),
+                  ),
+                ),
                 child: GridTile(
                   child: Image.network(imageURL),
                   footer: Container(
