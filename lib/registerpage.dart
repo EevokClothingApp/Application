@@ -1,5 +1,5 @@
 import 'package:application/loginpage.dart';
-import 'package:application/homepage.dart';
+import 'package:application/product_overview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:application/presets.dart';
@@ -167,7 +167,7 @@ class _RegisterPageState extends State<RegisterPage> {
           Navigator.of(context)
               .push(
               MaterialPageRoute(
-                  builder: (context) => HomePage()
+                  builder: (context) => ProductsOverviewScreen()
               )
           );
         },

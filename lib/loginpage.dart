@@ -1,8 +1,8 @@
 
+import 'package:application/product_overview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:application/presets.dart';
-import 'package:application/homepage.dart';
 import 'package:application/registerpage.dart';
 
 
@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.of(context)
               .push(
               MaterialPageRoute(
-                  builder: (context) => HomePage()
+                  builder: (context) => ProductsOverviewScreen()
               )
           );
         },

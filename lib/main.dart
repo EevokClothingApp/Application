@@ -1,5 +1,6 @@
+import 'package:application/loginpage.dart';
 import 'package:application/product_overview_screen.dart';
-import 'package:application/single_product_overview.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         //SingleProductOverview.pageRoute: (context) => SingleProductOverview(),
       },
 
-      home: ProductsOverviewScreen(),
+      home: LoginPage(),
 
     );
   }
