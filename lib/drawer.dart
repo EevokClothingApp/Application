@@ -1,3 +1,4 @@
+import 'package:application/product_overview_screen.dart';
 import 'package:flutter/material.dart';
 
 class SideDrawer extends StatelessWidget {
@@ -23,15 +24,28 @@ class SideDrawer extends StatelessWidget {
           InkWell(
             child: ListTile(
               title: Text("Home Page"),
-              leading: Icon(Icons.home, color: Colors.indigo,),
+              leading: Icon(
+                Icons.home,
+                color: Colors.indigo,
+              ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductsOverviewScreen(),
+                ),
+              );
+            },
           ),
           //Divider(),
           InkWell(
             child: ListTile(
               title: Text("My Account"),
-              leading: Icon(Icons.person, color: Colors.pink,),
+              leading: Icon(
+                Icons.person,
+                color: Colors.pink,
+              ),
             ),
             onTap: () {},
           ),
@@ -39,7 +53,10 @@ class SideDrawer extends StatelessWidget {
           InkWell(
             child: ListTile(
               title: Text("My Orders"),
-              leading: Icon(Icons.shopping_basket, color: Colors.green,),
+              leading: Icon(
+                Icons.shopping_basket,
+                color: Colors.green,
+              ),
             ),
             onTap: () {},
           ),
@@ -47,7 +64,10 @@ class SideDrawer extends StatelessWidget {
           InkWell(
             child: ListTile(
               title: Text("Categories"),
-              leading: Icon(Icons.category, color: Colors.brown,),
+              leading: Icon(
+                Icons.category,
+                color: Colors.brown,
+              ),
             ),
             onTap: () {},
           ),
@@ -55,7 +75,10 @@ class SideDrawer extends StatelessWidget {
           InkWell(
             child: ListTile(
               title: Text("Favorites"),
-              leading: Icon(Icons.favorite, color: Colors.redAccent,),
+              leading: Icon(
+                Icons.favorite,
+                color: Colors.redAccent,
+              ),
             ),
             onTap: () {},
           ),
@@ -63,7 +86,10 @@ class SideDrawer extends StatelessWidget {
           InkWell(
             child: ListTile(
               title: Text("Settings"),
-              leading: Icon(Icons.settings, color: Colors.black,),
+              leading: Icon(
+                Icons.settings,
+                color: Colors.black,
+              ),
             ),
             onTap: () {},
           ),
@@ -71,7 +97,10 @@ class SideDrawer extends StatelessWidget {
           InkWell(
             child: ListTile(
               title: Text("About"),
-              leading: Icon(Icons.info, color: Colors.blue,),
+              leading: Icon(
+                Icons.info,
+                color: Colors.blue,
+              ),
             ),
             onTap: () {},
           ),

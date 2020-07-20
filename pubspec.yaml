@@ -51,6 +51,11 @@ flutter:
     - images/2.jpg
     - images/2.jfif
     - images/3.jpg
+    - icons/cloth.png
+    - icons/dress.png
+    - icons/heel.png
+    - icons/shoe.png
+    - icons/trouser.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

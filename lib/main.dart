@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:application/loginpage.dart';
-
-
+import 'package:application/product_overview_screen.dart';
+import 'package:application/single_product_overview.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +10,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Eevok.clothing',
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      
+      routes: {
+        //SingleProductOverview.pageRoute: (context) => SingleProductOverview(),
+      },
+
+      home: ProductsOverviewScreen(),
+
     );
   }
 }
