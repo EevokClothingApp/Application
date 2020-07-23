@@ -1,7 +1,7 @@
-import 'package:application/horizontal_list_view.dart';
-import 'package:application/image_slider.dart';
-import 'package:application/product.dart';
-import 'package:application/single_product.dart';
+import 'package:application/widgets/horizontal_list_view.dart';
+import 'package:application/widgets/image_slider.dart';
+import 'package:application/providers/product.dart';
+import 'package:application/providers/single_product.dart';
 import 'package:flutter/material.dart';
 
 class RecentProducts extends StatelessWidget {
