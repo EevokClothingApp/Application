@@ -1,9 +1,9 @@
 
-import 'package:application/product_overview_screen.dart';
+import 'package:application/screens/product_overview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:application/presets.dart';
-import 'package:application/registerpage.dart';
+import 'package:application/widgets/presets.dart';
+import 'package:application/screens/registerpage.dart';
 
 
 class LoginPage extends StatefulWidget {

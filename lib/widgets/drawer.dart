@@ -1,4 +1,4 @@
-import 'package:application/product_overview_screen.dart';
+import 'package:application/screens/product_overview_screen.dart';
 import 'package:flutter/material.dart';
 
 class SideDrawer extends StatelessWidget {

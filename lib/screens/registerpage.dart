@@ -1,8 +1,8 @@
-import 'package:application/loginpage.dart';
-import 'package:application/product_overview_screen.dart';
+import 'package:application/screens/loginpage.dart';
+import 'package:application/screens/product_overview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:application/presets.dart';
+import 'package:application/widgets/presets.dart';
 
 
 class RegisterPage extends StatefulWidget {

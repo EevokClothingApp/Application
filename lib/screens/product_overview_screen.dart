@@ -1,6 +1,6 @@
-import 'package:application/cart.dart';
-import 'package:application/drawer.dart';
-import 'package:application/recent_products.dart';
+import 'package:application/screens/cart.dart';
+import 'package:application/widgets/drawer.dart';
+import 'package:application/providers/recent_products.dart';
 import 'package:flutter/material.dart';
 
 class ProductsOverviewScreen extends StatefulWidget {
