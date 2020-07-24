@@ -213,7 +213,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             TextSpan(
-              text: 'Login',
+              text: ' Login',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,

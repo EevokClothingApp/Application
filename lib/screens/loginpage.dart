@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             TextSpan(
-              text: 'Sign Up',
+              text: ' Sign Up',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
