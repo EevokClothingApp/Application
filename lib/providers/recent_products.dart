@@ -66,6 +66,7 @@ class RecentProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        
         ImageSlider(),
         Container(
           color: Colors.pink[50],
@@ -103,7 +104,6 @@ class RecentProducts extends StatelessWidget {
         SizedBox(
           height: 5.0,
         ),
-        //RecentProducts(),
         Container(
           padding: EdgeInsets.all(8.0),
           height: products.length * 80.0,
@@ -119,12 +119,8 @@ class RecentProducts extends StatelessWidget {
                 id: products[i].id,
                 description: products[i].description),
           ),
-          // ),
         ),
       ],
     );
-    //Padding(
-    //padding: const EdgeInsets.all(8.0),
-    //child:
   }
 }
