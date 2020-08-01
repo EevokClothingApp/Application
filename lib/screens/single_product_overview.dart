@@ -112,17 +112,35 @@ class SingleProductOverview extends StatelessWidget {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: MaterialButton(
+                  //padding: EdgeInsets.symmetric(vertical: 25.0),
+                  //width: double.infinity,
+                  child: RaisedButton(
+                    elevation: 5.0,
                     onPressed: () {},
-                    color: Colors.red,
-                    textColor: Colors.white,
-                    elevation: 0.2,
-                    child: Text("Buy Now"),
+                    padding: EdgeInsets.all(15.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    color: Colors.purple[200],
+                    child: Text(
+                      'BUY NOW',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        letterSpacing: 1.5,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'openSans',
+                      ),
+                    ),
                   ),
                 ),
+                //
                 IconButton(
                     icon: Icon(Icons.add_shopping_cart), onPressed: () {}),
-                IconButton(icon: Icon(Icons.favorite_border), onPressed: () {}),
+                IconButton(
+                  icon: Icon(Icons.favorite_border),
+                  onPressed: () {},
+                ),
               ],
             ),
             SizedBox(height: 10),
@@ -132,10 +150,9 @@ class SingleProductOverview extends StatelessWidget {
               //width: double.infinity,
               title: Text(
                 'Product Description',
-                
               ),
               subtitle: Text(
-                description, 
+                description,
               ),
             ),
             SizedBox(height: 10),

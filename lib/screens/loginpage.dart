@@ -1,10 +1,11 @@
-
 import 'package:application/screens/product_overview_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:application/widgets/presets.dart';
 import 'package:application/screens/registerpage.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,7 +13,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final GoogleSignIn googleSignIn = new GoogleSignIn();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  SharedPreferences preferences;
+
+  bool loading = false;
+  bool isLoggedIn = false;
   bool _rememberMe = false;
+
   Widget _buldEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,13 +34,9 @@ class _LoginPageState extends State<LoginPage> {
           alignment: Alignment.centerLeft,
           decoration: myBoxDecorationStyle,
           height: 60.0,
-          
           child: TextField(
             keyboardType: TextInputType.emailAddress,
-            style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'opemSans'
-            ),
+            style: TextStyle(color: Colors.white, fontFamily: 'opemSans'),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
@@ -64,10 +68,7 @@ class _LoginPageState extends State<LoginPage> {
           height: 60.0,
           child: TextField(
             obscureText: true,
-            style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'opemSans'
-            ),
+            style: TextStyle(color: Colors.white, fontFamily: 'opemSans'),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
@@ -91,12 +92,8 @@ class _LoginPageState extends State<LoginPage> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          Navigator.of(context)
-              .push(
-              MaterialPageRoute(
-                  builder: (context) => ProductsOverviewScreen()
-              )
-          );
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ProductsOverviewScreen()));
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -121,11 +118,7 @@ class _LoginPageState extends State<LoginPage> {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .push(
-            MaterialPageRoute(
-                builder: (context) => RegisterPage()
-            )
-        );
+            .push(MaterialPageRoute(builder: (context) => RegisterPage()));
       },
       child: RichText(
         text: TextSpan(
@@ -139,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             TextSpan(
-              text: 'Sign Up',
+              text: ' Sign Up',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -154,14 +147,13 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
+    return Scaffold(
       body: Stack(
         children: <Widget>[
-          Container (
-            height: double.infinity,
-            width: double.infinity,
-            color: Colors.black45
-          ),
+          Container(
+              height: double.infinity,
+              width: double.infinity,
+              color: Colors.black45),
           Container(
             height: double.infinity,
             child: SingleChildScrollView(
@@ -190,12 +182,34 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: 30.0),
                     _buildsignupBtn()
                   ],
-                )
-            ),
+                )),
           )
         ],
       ),
     );
   }
 
+  void isSignedIn() async {
+    setState(() {
+      loading = true;
+    });
+
+    preferences = await SharedPreferences.getInstance();
+    isLoggedIn = await googleSignIn.isSignedIn();
+
+    if (isLoggedIn) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {},
+        ),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    isSignedIn();
+  }
 }
