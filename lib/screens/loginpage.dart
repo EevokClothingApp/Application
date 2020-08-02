@@ -1,9 +1,11 @@
 import 'package:application/screens/product_overview_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:application/widgets/presets.dart';
 import 'package:application/screens/registerpage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -145,6 +147,24 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  Widget _buildLoginGoogle() {
+    return Stack(
+      children: <Widget>[
+        Center(
+          child: FlatButton(
+            onPressed: () {
+              handleSignIn();
+            },
+            child: Text(
+              "Sign in / Sign Up with google",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -180,7 +200,9 @@ class _LoginPageState extends State<LoginPage> {
                     _buildPasswordTF(),
                     _buildLoginBtn(),
                     SizedBox(height: 30.0),
-                    _buildsignupBtn()
+                    _buildsignupBtn(),
+                    SizedBox(height: 30.0),
+                    _buildLoginGoogle(),
                   ],
                 )),
           )
@@ -201,15 +223,90 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) {},
+          builder: (context) => ProductsOverviewScreen(),
         ),
       );
     }
+
+    await firebaseAuth.currentUser().then((user) {
+      if (user != null) {
+        setState(() {
+          isLoggedIn = false;
+        });
+      }
+    });
+
+    setState(() {
+      loading = false;
+    });
+  }
+
+  Future handleSignIn() async {
+    preferences = await SharedPreferences.getInstance();
+
+    setState(() {
+      loading = true;
+    });
+
+    GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    AuthCredential credential = GoogleAuthProvider.getCredential(
+        idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
+    AuthResult result = await firebaseAuth.signInWithCredential(credential);
+    FirebaseUser firebaseUser = result.user;
+
+    if (firebaseUser != null) {
+      final QuerySnapshot result = await Firestore.instance
+          .collection("users")
+          .where("id", isEqualTo: firebaseUser.uid)
+          .getDocuments();
+
+      final List<DocumentSnapshot> documents = result.documents;
+
+      if (documents.length == 0) {
+        Firestore.instance
+            .collection("users")
+            .document(firebaseUser.uid)
+            .setData({
+          "id": firebaseUser.uid,
+          "userName": firebaseUser.displayName,
+          "profPic": firebaseUser.photoUrl
+        });
+
+        await preferences.setString("id", firebaseUser.uid);
+        await preferences.setString("username", firebaseUser.displayName);
+        await preferences.setString("profPic", firebaseUser.photoUrl);
+      } else {
+        await preferences.setString("id", documents[0]['id']);
+        await preferences.setString("username", documents[0]['userName']);
+        await preferences.setString("profPic", documents[0]['profPic']);
+      }
+
+      Fluttertoast.showToast(msg: "Logged in as : " + firebaseUser.displayName);
+      setState(() {
+        loading = false;
+      });
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProductsOverviewScreen(),
+        ),
+      );
+    } else {
+      Fluttertoast.showToast(msg: "Login Failed!");
+    }
+  }
+
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  Future signOut() async {
+    await _firebaseAuth.signOut();
   }
 
   @override
   void initState() {
     super.initState();
-    isSignedIn();
+    signOut();
+    //isSignedIn();
   }
 }
