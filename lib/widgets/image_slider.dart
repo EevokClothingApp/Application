@@ -5,7 +5,7 @@ class ImageSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.0,
+      height: 150.0,
       child: Carousel(
         boxFit: BoxFit.cover,
         images: [
