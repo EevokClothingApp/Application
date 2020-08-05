@@ -1,18 +1,21 @@
-
+import 'package:application/screens/loginpage.dart';
+import 'package:application/screens/product_overview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:application/presets.dart';
-import 'package:application/homepage.dart';
-import 'package:application/registerpage.dart';
+import 'package:application/widgets/presets.dart';
 
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
+  List<String> _district =<String>[
+    'Rathnapura'
+        'Colombo'
+        'Kandy'
+  ];
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  bool _rememberMe = false;
+class _RegisterPageState extends State<RegisterPage> {
   Widget _buldEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +29,6 @@ class _LoginPageState extends State<LoginPage> {
           alignment: Alignment.centerLeft,
           decoration: myBoxDecorationStyle,
           height: 60.0,
-          
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
@@ -40,7 +42,43 @@ class _LoginPageState extends State<LoginPage> {
                 Icons.email,
                 color: Colors.white,
               ),
-              hintText: 'Enter your Email Address',
+              hintText: 'Enter your Email address',
+              hintStyle: myHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+
+  Widget _buldUserNameTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'User Name',
+          style: myLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: myBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            keyboardType: TextInputType.text,
+            style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'opemSans'
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.face,
+                color: Colors.white,
+              ),
+              hintText: 'Enter user name',
               hintStyle: myHintTextStyle,
             ),
           ),
@@ -75,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                 Icons.lock,
                 color: Colors.white,
               ),
-              hintText: 'Enter your Password',
+              hintText: 'Enter your password',
               hintStyle: myHintTextStyle,
             ),
           ),
@@ -84,7 +122,42 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildLoginBtn() {
+  Widget _buildConfirmPasswordTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Confirm Password',
+          style: myLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: myBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            obscureText: true,
+            style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'opemSans'
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Colors.white,
+              ),
+              hintText: 'Enter your password again',
+              hintStyle: myHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildRegisterBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
@@ -94,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.of(context)
               .push(
               MaterialPageRoute(
-                  builder: (context) => HomePage()
+                  builder: (context) => ProductsOverviewScreen()
               )
           );
         },
@@ -104,11 +177,11 @@ class _LoginPageState extends State<LoginPage> {
         ),
         color: Colors.white,
         child: Text(
-          'LOGIN',
+          'Register',
           style: TextStyle(
             color: Colors.black87,
             letterSpacing: 1.5,
-            fontSize: 18.0,
+            fontSize: 25.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'openSans',
           ),
@@ -117,21 +190,22 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildsignupBtn() {
+  Widget _buildLoginBtn() {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
             .push(
             MaterialPageRoute(
-                builder: (context) => RegisterPage()
+                builder: (context) => LoginPage()
             )
         );
       },
+
       child: RichText(
         text: TextSpan(
           children: [
             TextSpan(
-              text: 'Don\'t have an account?',
+              text: 'Already have an account?',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -139,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             TextSpan(
-              text: 'Sign Up',
+              text: ' Login',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -160,7 +234,7 @@ class _LoginPageState extends State<LoginPage> {
           Container (
             height: double.infinity,
             width: double.infinity,
-            color: Colors.black45
+              color: Colors.black45
           ),
           Container(
             height: double.infinity,
@@ -168,13 +242,13 @@ class _LoginPageState extends State<LoginPage> {
                 physics: AlwaysScrollableScrollPhysics(),
                 padding: EdgeInsets.symmetric(
                   horizontal: 40.0,
-                  vertical: 120.0,
+                  vertical: 70.0,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'Sign In',
+                      'Sign Up',
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'openSans',
@@ -185,14 +259,18 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: 30.0),
                     _buldEmailTF(),
                     SizedBox(height: 30.0),
-                    _buildPasswordTF(),
-                    _buildLoginBtn(),
+                    _buldUserNameTF(),
                     SizedBox(height: 30.0),
-                    _buildsignupBtn()
+                    _buildPasswordTF(),
+                    SizedBox(height: 30.0),
+                    _buildConfirmPasswordTF(),
+                    _buildRegisterBtn(),
+                    SizedBox(height: 30.0),
+                    _buildLoginBtn()
                   ],
                 )
             ),
-          )
+          ),
         ],
       ),
     );

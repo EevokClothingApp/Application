@@ -1,6 +1,6 @@
-import 'package:application/drawer.dart';
-import 'package:application/image_slider.dart';
-import 'package:carousel_pro/carousel_pro.dart';
+import 'package:application/screens/cart.dart';
+import 'package:application/widgets/drawer.dart';
+import 'package:application/providers/recent_products.dart';
 import 'package:flutter/material.dart';
 
 class ProductsOverviewScreen extends StatefulWidget {
@@ -28,17 +28,19 @@ class _MyHomePageState extends State<ProductsOverviewScreen> {
               Icons.shopping_cart,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CartScreen(),
+                ),
+              );
+            },
           )
         ],
       ),
       drawer: SideDrawer(),
-      body: ListView(
-        children: <Widget>[
-          ImageSlider(),
-          
-        ],
-      ),
+      body: RecentProducts(),
     );
   }
 }
