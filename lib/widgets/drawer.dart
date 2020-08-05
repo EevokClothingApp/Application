@@ -1,7 +1,11 @@
+import 'package:application/screens/loginpage.dart';
 import 'package:application/screens/product_overview_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SideDrawer extends StatelessWidget {
+  final LoginPage login = new LoginPage();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -93,7 +97,6 @@ class SideDrawer extends StatelessWidget {
             ),
             onTap: () {},
           ),
-          //Divider(),
           InkWell(
             child: ListTile(
               title: Text("About"),
@@ -103,6 +106,24 @@ class SideDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {},
+          ),
+          //Divider(),
+          InkWell(
+            child: ListTile(
+              title: Text("Sign Out"),
+              leading: Icon(
+                Icons.info,
+                color: Colors.red,
+              ),
+            ),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LoginPage(),
+                ),
+              );
+            },
           ),
           Divider(),
         ],
