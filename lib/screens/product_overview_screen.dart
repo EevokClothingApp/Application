@@ -32,7 +32,7 @@ class _MyHomePageState extends State<ProductsOverviewScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CartScreen(),
+                  builder: (context) => Cart(),
                 ),
               );
             },

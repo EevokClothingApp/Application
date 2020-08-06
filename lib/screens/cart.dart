@@ -1,7 +1,7 @@
+import 'package:application/providers/cart_products.dart';
 import 'package:flutter/material.dart';
 
 //my imports
-import 'package:eevokclothing/providers/cart_products.dart';
 //import 'package:eevokclothing/cart_products.dart';
 
 
