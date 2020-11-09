@@ -9,7 +9,6 @@ import 'package:application/screens/cart.dart';
 import 'package:application/screens/loginpage.dart';
 import 'package:application/screens/product_overview_screen.dart';
 import 'package:application/screens/registerpage.dart';
-import 'package:application/screens/single_product_overview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
