@@ -16,13 +16,24 @@ class _RecentProductsState extends State<RecentProducts> {
   List temp = [];
 
   Future getDocs() async {
+    temp.clear();
     temp = await _firestore.collection("products").getDocuments().then((value) {
       return value.documents;
     });
+
     for (int i = 0; i < temp.length; i++) {
-      
+      products.add(Product(
+        id: temp[i]['id'],
+        title: temp[i]['name'],
+        description: temp[i]['description'],
+        price: temp[i]['price'],
+        imageURL:
+            temp[i]['images'][0],
+        prod_old_price: 50.0,
+      ));
       print(temp[i]['brand']); //change these
-    } 
+    }
+    setState(() {});
   }
 
   List products = [
@@ -86,13 +97,14 @@ class _RecentProductsState extends State<RecentProducts> {
 
   @override
   void initState() {
+    getDocs();
     //getProducts();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    getDocs();
+    print(products.length);
     return ListView(
       children: <Widget>[
         ImageSlider(),
