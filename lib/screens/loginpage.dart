@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:application/widgets/presets.dart';
 import 'package:application/screens/registerpage.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -294,7 +294,7 @@ class _LoginPageState extends State<LoginPage> {
         await preferences.setString("profPic", documents[0]['profPic']);
       }
 
-      Fluttertoast.showToast(msg: "Logged in as : " + firebaseUser.displayName);
+      //Fluttertoast.showToast(msg: "Logged in as : " + firebaseUser.displayName);
       setState(() {
         loading = false;
       });
@@ -305,7 +305,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     } else {
-      Fluttertoast.showToast(msg: "Login Failed!");
+      //Fluttertoast.showToast(msg: "Login Failed!");
     }
   }
 
