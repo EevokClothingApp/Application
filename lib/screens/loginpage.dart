@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:application/widgets/presets.dart';
 import 'package:application/screens/registerpage.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,6 +19,8 @@ class _LoginPageState extends State<LoginPage> {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   SharedPreferences preferences;
 
+  String _password;
+  String _email;
   bool loading = false;
   bool isLoggedIn = false;
   bool _rememberMe = false;
@@ -36,8 +38,10 @@ class _LoginPageState extends State<LoginPage> {
           alignment: Alignment.centerLeft,
           decoration: myBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
+            maxLines: 1,
             keyboardType: TextInputType.emailAddress,
+            autofocus: false,
             style: TextStyle(color: Colors.white, fontFamily: 'opemSans'),
             decoration: InputDecoration(
               border: InputBorder.none,
@@ -49,6 +53,9 @@ class _LoginPageState extends State<LoginPage> {
               hintText: 'Enter your Email Address',
               hintStyle: myHintTextStyle,
             ),
+            validator: (value) =>
+                value.isEmpty ? 'Email can\'t be empty' : null,
+            onSaved: (value) => _email = value.trim(),
           ),
         ),
       ],
@@ -68,8 +75,10 @@ class _LoginPageState extends State<LoginPage> {
           alignment: Alignment.centerLeft,
           decoration: myBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
+            maxLines: 1,
             obscureText: true,
+            autofocus: false,
             style: TextStyle(color: Colors.white, fontFamily: 'opemSans'),
             decoration: InputDecoration(
               border: InputBorder.none,
@@ -81,6 +90,9 @@ class _LoginPageState extends State<LoginPage> {
               hintText: 'Enter your Password',
               hintStyle: myHintTextStyle,
             ),
+            validator: (value) =>
+                value.isEmpty ? 'Password can\'t be empty' : null,
+            onSaved: (value) => _password = value.trim(),
           ),
         ),
       ],
@@ -282,7 +294,7 @@ class _LoginPageState extends State<LoginPage> {
         await preferences.setString("profPic", documents[0]['profPic']);
       }
 
-      Fluttertoast.showToast(msg: "Logged in as : " + firebaseUser.displayName);
+      //Fluttertoast.showToast(msg: "Logged in as : " + firebaseUser.displayName);
       setState(() {
         loading = false;
       });
@@ -293,7 +305,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     } else {
-      Fluttertoast.showToast(msg: "Login Failed!");
+      //Fluttertoast.showToast(msg: "Login Failed!");
     }
   }
 

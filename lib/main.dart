@@ -10,14 +10,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Eevok.clothing',
       debugShowCheckedModeBanner: false,
-      
       routes: {
         //SingleProductOverview.pageRoute: (context) => SingleProductOverview(),
       },
-
       home: LoginPage(),
-
     );
   }
 }
-
